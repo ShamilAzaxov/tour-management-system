@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create destinations table
+      author: Shamil Azakhov
+      changes:
+        - createTable:
+            tableName: destinations
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: location
+                  type: varchar(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: visit_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tour_id
+                  type: bigint
+                  constraints:
+                    nullable: false

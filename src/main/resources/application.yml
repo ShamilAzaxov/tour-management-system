@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: tour-management-system
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tour_management
+    username: postgres
+    password: secret
+  jpa:
+    open-in-view: false

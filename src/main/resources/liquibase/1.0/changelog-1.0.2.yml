@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create guides table
+      author: Shamil Azakhov
+      changes:
+        - createTable:
+            tableName: guides
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: phone_number
+                  type: varchar(30)
+                  constraints:
+                    nullable: false

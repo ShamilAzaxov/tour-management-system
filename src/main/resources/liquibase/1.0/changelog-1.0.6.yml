@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create tour_traveler table
+      author: Shamil Azakhov
+      changes:
+        - createTable:
+            tableName: tour_traveler
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tour_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: traveler_id
+                  type: bigint
+                  constraints:
+                    nullable: false
