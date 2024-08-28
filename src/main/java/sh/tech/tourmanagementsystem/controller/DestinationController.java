@@ -3,7 +3,8 @@ package sh.tech.tourmanagementsystem.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sh.tech.tourmanagementsystem.dto.request.DestinationRequest;
+import sh.tech.tourmanagementsystem.dto.request.destination.SaveDestinationRequest;
+import sh.tech.tourmanagementsystem.dto.request.destination.UpdateDestinationRequest;
 import sh.tech.tourmanagementsystem.dto.response.DestinationResponse;
 import sh.tech.tourmanagementsystem.service.inter.DestinationService;
 
@@ -30,8 +31,8 @@ public class DestinationController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public ResponseEntity<DestinationResponse> saveUpdateDestination(@RequestBody DestinationRequest destinationRequest) {
-        return ResponseEntity.status(201).body(destinationService.saveUpdateDestination(destinationRequest));
+    public ResponseEntity<DestinationResponse> saveDestination(@RequestBody SaveDestinationRequest saveDestinationRequest) {
+        return ResponseEntity.status(201).body(destinationService.saveDestination(saveDestinationRequest));
     }
 
     @DeleteMapping("/{id}")
@@ -39,5 +40,12 @@ public class DestinationController {
     public ResponseEntity<Void> deleteDestinationById(@PathVariable("id") Long id) {
         destinationService.deleteDestinationById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    @ResponseStatus(CREATED)
+    public ResponseEntity<DestinationResponse> updateDestination(
+            @RequestBody UpdateDestinationRequest updateDestinationRequest) {
+        return ResponseEntity.status(201).body(destinationService.updateDestination(updateDestinationRequest));
     }
 }

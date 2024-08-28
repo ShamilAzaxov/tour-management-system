@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
+import static jakarta.persistence.CascadeType.ALL;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,8 +26,8 @@ public class Tour {
     BigDecimal price;
     LocalDate startDate;
     LocalDate endDate;
-    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL)
-    List<Destination> destination;
+    @OneToMany(mappedBy = "tour", cascade = ALL)
+    List<Destination> destinations;
     @ManyToMany
     @JoinTable(name = "tour_guide",
             joinColumns = @JoinColumn(name = "tour_id"),
@@ -36,6 +38,5 @@ public class Tour {
     @JoinTable(name = "tour_traveler",
             joinColumns = @JoinColumn(name = "tour_id"),
             inverseJoinColumns = @JoinColumn(name = "traveler_id"))
-    @ToString.Exclude
     List<Traveler> travelers;
 }

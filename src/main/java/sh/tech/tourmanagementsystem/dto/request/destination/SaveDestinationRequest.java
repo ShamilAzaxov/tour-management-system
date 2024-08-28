@@ -1,4 +1,4 @@
-package sh.tech.tourmanagementsystem.dto.response;
+package sh.tech.tourmanagementsystem.dto.request.destination;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,10 +12,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class DestinationResponse {
-    Long id;
+public class SaveDestinationRequest{
     String location;
-    String description;
-    LocalDate visitDate;
-    String tourName;
+    String description; //a description of the place
+    LocalDate visitDate; //the date the place is visited
+    Long tourId;
 }

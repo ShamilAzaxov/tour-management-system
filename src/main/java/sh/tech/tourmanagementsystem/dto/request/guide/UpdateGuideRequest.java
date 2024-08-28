@@ -1,4 +1,4 @@
-package sh.tech.tourmanagementsystem.dto.request;
+package sh.tech.tourmanagementsystem.dto.request.guide;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,9 +10,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TravelerRequest {
+public class UpdateGuideRequest {
     Long id;
-    String firstName;
-    String lastName;
+    String name;
     String email;
+    String phoneNumber;
 }

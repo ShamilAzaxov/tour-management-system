@@ -7,10 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-
 import java.time.LocalDate;
-
-import static jakarta.persistence.FetchType.LAZY;
 
 @Data
 @AllArgsConstructor
@@ -25,7 +22,7 @@ public class Destination {
     String location;
     String description; //a description of the place
     LocalDate visitDate; //the date the place is visited
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
     @JoinColumn(name = "tour_id", referencedColumnName = "id")
     Tour tour;
 }

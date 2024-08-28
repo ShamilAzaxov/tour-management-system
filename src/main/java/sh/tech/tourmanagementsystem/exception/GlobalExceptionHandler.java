@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.*;
 import static sh.tech.tourmanagementsystem.dto.enums.ExceptionConstant.UNEXPECTED_EXCEPTION;
 
 @RestControllerAdvice
@@ -23,6 +22,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(NOT_FOUND)
     public ErrorResponse handle(NotFoundException ex){
+        log.error("Exception: ", ex);
+        return ErrorResponse.builder().code(ex.getCode()).message(ex.getMessage()).build();
+    }
+    @ExceptionHandler(GuideISBusyException.class)
+    @ResponseStatus(SERVICE_UNAVAILABLE)
+    public ErrorResponse handle(GuideISBusyException ex){
         log.error("Exception: ", ex);
         return ErrorResponse.builder().code(ex.getCode()).message(ex.getMessage()).build();
     }

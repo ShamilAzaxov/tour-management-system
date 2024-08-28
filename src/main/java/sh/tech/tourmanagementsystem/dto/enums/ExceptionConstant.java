@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ExceptionConstant {
+    GUIDE_IS_BUSY("SERVICE UNAVAILABLE", "Guide is busy"),
     UNEXPECTED_EXCEPTION("INTERNAL SERVER ERROR", "Occurred unexpected exception"),
     PASSPORT_NOT_FOUND("NOT FOUND ERROR", "Passport not found"),
     GUIDE_NOT_FOUND("NOT FOUND ERROR", "Guide not found"),
@@ -14,7 +15,7 @@ public enum ExceptionConstant {
     private final String message;
     private final String code;
 
-    ExceptionConstant(String message, String code) {
+    ExceptionConstant(String code, String message) {
         this.message = message;
         this.code = code;
     }

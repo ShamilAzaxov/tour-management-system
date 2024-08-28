@@ -1,4 +1,4 @@
-package sh.tech.tourmanagementsystem.dto.response;
+package sh.tech.tourmanagementsystem.dto.request.passport;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,10 +12,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class DestinationResponse {
+public class UpdatePassportRequest {
     Long id;
-    String location;
-    String description;
-    LocalDate visitDate;
-    String tourName;
+    String passportNumber;
+    LocalDate issueDate;
+    LocalDate expiryDate;
+    String country;
 }

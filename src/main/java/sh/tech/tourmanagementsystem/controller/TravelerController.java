@@ -3,7 +3,9 @@ package sh.tech.tourmanagementsystem.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sh.tech.tourmanagementsystem.dto.request.TravelerRequest;
+import sh.tech.tourmanagementsystem.dto.request.traveler.SaveTravelerRequest;
+import sh.tech.tourmanagementsystem.dto.request.traveler.UpdateTravelerRequest;
+import sh.tech.tourmanagementsystem.dto.response.TourResponse;
 import sh.tech.tourmanagementsystem.dto.response.TravelerResponse;
 import sh.tech.tourmanagementsystem.service.inter.TravelerService;
 
@@ -30,14 +32,34 @@ public class TravelerController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public ResponseEntity<TravelerResponse> saveUpdateTraveler(@RequestBody TravelerRequest travelerRequest) {
-        return ResponseEntity.status(201).body(travelerService.saveUpdateTraveler(travelerRequest));
+    public ResponseEntity<TravelerResponse> saveUpdateTraveler(@RequestBody SaveTravelerRequest saveTravelerRequest) {
+        return ResponseEntity.status(201).body(travelerService.saveTraveler(saveTravelerRequest));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
     public ResponseEntity<Void> deleteTraveler(@PathVariable("id") Long id) {
         travelerService.deleteTraveler(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    @ResponseStatus(CREATED)
+    public ResponseEntity<TravelerResponse> updateTraveler(
+            @RequestBody UpdateTravelerRequest updateTravelerRequest) {
+        return ResponseEntity.status(201).body(travelerService.updateTraveler(updateTravelerRequest));
+    }
+
+    @GetMapping("/tours/{id}")
+    public ResponseEntity<List<TourResponse>> getToursByTravelerId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(travelerService.getToursByTravelerId(id));
+    }
+
+    @PutMapping("/traveler-to-tour")
+    @ResponseStatus(NO_CONTENT)
+    public ResponseEntity<Void> assignTravelerToTour(@RequestParam Long tourId,
+                                                     @RequestParam Long travelerId){
+        travelerService.assignTravelerToTour(tourId, travelerId);
         return ResponseEntity.noContent().build();
     }
 }

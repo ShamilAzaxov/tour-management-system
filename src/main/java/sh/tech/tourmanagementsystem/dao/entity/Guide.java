@@ -3,12 +3,16 @@ package sh.tech.tourmanagementsystem.dao.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import sh.tech.tourmanagementsystem.dto.enums.GuideStatus;
 
-import java.util.Set;
+import java.util.List;
 
 import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.EnumType.STRING;
+import static jakarta.persistence.FetchType.LAZY;
 
 @Data
+@EqualsAndHashCode(of = "id")
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -21,9 +25,11 @@ public class Guide {
     String name;
     String email;
     String phoneNumber;
-    @OneToOne(mappedBy = "guide", cascade = ALL, orphanRemoval = true)
+    @Enumerated(STRING)
+    GuideStatus status = GuideStatus.FREE;
+    @OneToOne(mappedBy = "guide", cascade = ALL)
     @ToString.Exclude
     Passport passport;
-    @ManyToMany(mappedBy = "guides")
-    Set<Tour> tours;
+    @ManyToMany(fetch = LAZY, mappedBy = "guides")
+    List<Tour> tours;
 }

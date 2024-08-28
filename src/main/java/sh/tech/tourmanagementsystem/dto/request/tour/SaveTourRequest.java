@@ -1,4 +1,4 @@
-package sh.tech.tourmanagementsystem.dto.request;
+package sh.tech.tourmanagementsystem.dto.request.tour;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -13,8 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TourRequest {
-    Long id;
+public class SaveTourRequest {
     String name;
     String description;
     BigDecimal price;

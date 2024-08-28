@@ -1,4 +1,4 @@
-package sh.tech.tourmanagementsystem.dto.request;
+package sh.tech.tourmanagementsystem.dto.response.passport;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PassportRequest {
+public class PassportResponse {
     Long id;
     String passportNumber;
     LocalDate issueDate;

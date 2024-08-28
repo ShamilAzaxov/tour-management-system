@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TourResponse {
+    Long id;
     String name;
     String description;
     BigDecimal price;
